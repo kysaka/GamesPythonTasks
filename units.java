@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public abstract class units {
+public abstract class Units implements InGameInterface {
 
     protected static int number;
     protected static Random r;
@@ -10,22 +10,22 @@ public abstract class units {
     protected int maxHp;
 
     static {
-        units.number = 0;
-        units.r = new Random();
+        Units.number = 0;
+        Units.r = new Random();
     }
     
-    public units(String name, int hp) {
+    public Units(String name, int hp) {
         this.name = name;
         this.hp = this.maxHp = 100;
     }
     
-    public units() {
-        this(String.format("Hero_Units #%d", ++units.number),
-        units.r.nextInt(100, 200));
+    public Units() {
+        this(String.format("Hero_Units #%d", ++Units.number),
+        Units.r.nextInt(100, 200));
     }
     
     public String getInfo() {
-        this.hp = units.r.nextInt(100, 150);
+        this.hp = Units.r.nextInt(100, 150);
         return String.format("Name: %s  Hp: %d  Type: %s", 
                 this.name, this.hp, this.getClass().getSimpleName());
     }
@@ -43,13 +43,11 @@ public abstract class units {
     
     public int health;
 
-
     public int defence;
 
     public int energy;
 
     public int damage;
-
 
     public int actionPoints;
     
@@ -61,7 +59,7 @@ public abstract class units {
 
     public int initiave;
 
-    public units (String name, int health, int defence, int energy, int damage, int actionPoints, int initiave){
+    public Units (String name, int health, int defence, int energy, int damage, int actionPoints, int initiave){
         this.name = name;
         this.health = health;
         this.defence = defence;

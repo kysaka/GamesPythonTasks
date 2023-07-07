@@ -1,6 +1,6 @@
-public class distance {
+public class Distance {
 
-    public class Sniper extends units {
+    public class Sniper extends Units {
 
         // private int maxStamina;
         // private int stamina;
@@ -9,18 +9,23 @@ public class distance {
             super("Sniper", 100, 20, 50, 70, 5, 1);
         }
 
-        public void attack(units target) {
-            int damage = units.r.nextInt(10, 20);
+        public void attack(Units target) {
+            int damage = Units.r.nextInt(10, 20);
             target.getDamage(damage);
         }
         
         public String getInfo() {
-            this.energy = units.r.nextInt(50, 100);
+            this.energy = Units.r.nextInt(50, 100);
             return String.format("%s  Stamina: %d", super.getInfo(), this.energy);
+        }
+
+        @Override
+        public void step() {
+            throw new UnsupportedOperationException("Unimplemented method 'step'");
         }
     }
 
-    public class Crossbowman extends units {
+    public class Crossbowman extends Units {
 
         // private int maxStamina;
         // private int stamina; 
@@ -29,14 +34,19 @@ public class distance {
             super("Crossbowman", 100, 20, 50, 70, 5, 1);
         }
 
-        public void attack(units target) {
-            int damage = units.r.nextInt(10, 20);
+        public void attack(Units target) {
+            int damage = Units.r.nextInt(10, 20);
             target.getDamage(damage);
         }
         
         public String getInfo() {
-            this.energy = units.r.nextInt(70, 120);
+            this.energy = Units.r.nextInt(70, 120);
             return String.format("%s  Stamina: %d", super.getInfo(), this.energy);
+        }
+
+        @Override
+        public void step() {
+            throw new UnsupportedOperationException("Unimplemented method 'step'");
         }
 
     }

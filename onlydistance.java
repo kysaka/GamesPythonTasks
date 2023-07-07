@@ -1,6 +1,6 @@
-public class onlydistance {
+public class Onlydistance {
     
-    public class Mage extends units {
+    public class Mage extends Units {
 
         // private int maxMana;
         // private int mana;
@@ -9,19 +9,24 @@ public class onlydistance {
             super("Mage", 100, 10, 100, 50, 5, 1);
         }
         
-        public void attack(units target) {
-            int damage = units.r.nextInt(10, 20);
+        public void attack(Units target) {
+            int damage = Units.r.nextInt(10, 20);
             target.getDamage(damage);
         }
         
         public String getInfo() {
-            this.energy = units.r.nextInt(100, 200);
+            this.energy = Units.r.nextInt(100, 200);
             return String.format("%s  Mana: %d", super.getInfo(), this.energy);
+        }
+
+        @Override
+        public void step() {
+            throw new UnsupportedOperationException("Unimplemented method 'step'");
         }
 
     }
 
-    public class Monk extends units {
+    public class Monk extends Units {
 
         // private int blessing;
         // private int maxBlessing;
@@ -40,8 +45,13 @@ public class onlydistance {
 
 
         public String getInfo() {
-            this.energy = units.r.nextInt(100, 200);
+            this.energy = Units.r.nextInt(100, 200);
             return String.format("%s  Blessing: %d", super.getInfo(), this.energy);
+        }
+
+        @Override
+        public void step() {
+            throw new UnsupportedOperationException("Unimplemented method 'step'");
         }
         
     }

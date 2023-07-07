@@ -1,18 +1,18 @@
-public class melee {
+public class Melee {
 
-    public class rogue extends units {
+    public class Rogue extends Units {
 
-        private int maxStamina;
-        private int stamina;
+        // private int maxStamina;
+        // private int stamina;
 
-        public rogue(String name, int health, int defence, int stamina, int damage, int actionPoints, int initiave) {
+        public Rogue(String name, int health, int defence, int stamina, int damage, int actionPoints, int initiave) {
             super("Rogue", 100, 30, 50, 100, 5, 2);
             
 
         }
 
-        public void attack(units target) {
-            int damage = units.r.nextInt(10, 20);
+        public void attack(Units target) {
+            int damage = Units.r.nextInt(10, 20);
             target.getDamage(damage);
         }
         
@@ -24,22 +24,27 @@ public class melee {
         // }
 
         public String getInfo() {
-            return String.format("%s  Stamina: %d",super.getInfo(), this.stamina);
+            return String.format("%s  Stamina: %d",super.getInfo(), this.energy);
+        }
+
+        @Override
+        public void step() {
+            throw new UnsupportedOperationException("Unimplemented method 'step'");
         }
 
     }
 
-    public class spearman extends units {
+    public class Spearman extends Units {
 
-        private int maxStamina;
-        private int stamina;
+        // private int maxStamina;
+        // private int stamina;
 
-        public spearman(String name, int health, int defence, int stamina, int damage, int actionPoints, int initiave) {
+        public Spearman(String name, int health, int defence, int stamina, int damage, int actionPoints, int initiave) {
             super("Spearman", 100, 50, 75, 70, 5, 2);
         }
 
-        public void attack(units target) {
-            int damage = units.r.nextInt(10, 20);
+        public void attack(Units target) {
+            int damage = Units.r.nextInt(10, 20);
             target.getDamage(damage);
         }
         
@@ -51,7 +56,12 @@ public class melee {
         // }
 
         public String getInfo() {
-            return String.format("%s  Stamina: %d",super.getInfo(), this.stamina);
+            return String.format("%s  Stamina: %d",super.getInfo(), this.energy);
+        }
+
+        @Override
+        public void step() {
+            throw new UnsupportedOperationException("Unimplemented method 'step'");
         }
 
     }
