@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class units {
+public abstract class units {
 
     protected static int number;
     protected static Random r;
@@ -13,23 +13,36 @@ public class units {
         units.number = 0;
         units.r = new Random();
     }
-
+    
     public units(String name, int hp) {
         this.name = name;
-        this.hp = hp;
-        this.maxHp = hp;
+        this.hp = this.maxHp = 100;
     }
-
+    
     public units() {
-        this(String.format("Hero_Priest #%d", ++units.number),
-                units.r.nextInt(100, 200));
+        this(String.format("Hero_Units #%d", ++units.number),
+        units.r.nextInt(100, 200));
     }
-
-    public int health;
-
+    
+    public String getInfo() {
+        this.hp = units.r.nextInt(100, 150);
+        return String.format("Name: %s  Hp: %d  Type: %s", 
+                this.name, this.hp, this.getClass().getSimpleName());
+    }
+    
+    
     protected void healed(int Hp) {
         this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
     }
+    
+    protected void getDamage(int damage) {
+        if (this.hp - damage > 0) {
+            this.hp -= damage;
+        }
+    }
+    
+    public int health;
+
 
     public int defence;
 
@@ -37,11 +50,6 @@ public class units {
 
     public int damage;
 
-    protected void getDamage(int damage) {
-        if (this.hp - damage > 0) {
-            this.hp -= damage;
-        }
-    }
 
     public int actionPoints;
     
@@ -61,11 +69,6 @@ public class units {
         this.damage = damage;
         this.actionPoints = actionPoints;
         this.initiave = initiave;
-    }
-
-    public String getInfo() {
-        return String.format("Name: %s  Hp: %d  Type: %s",
-                this.name, this.hp, this.getClass().getSimpleName());
     }
 
 }

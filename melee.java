@@ -16,12 +16,12 @@ public class melee {
             target.getDamage(damage);
         }
         
-        public rogue() {
-            super(String.format("Hero_Rogue #%d", ++rogue.number),
-            rogue.r.nextInt(100, 200));
-            this.maxStamina = rogue.r.nextInt(50, 100);
-            this.stamina = maxStamina;
-        }
+        // public rogue() {
+        //     super(String.format("Hero_Rogue #%d", ++rogue.number),
+        //             rogue.r.nextInt(100, 200));
+        //     this.maxStamina = rogue.r.nextInt(50, 100);
+        //     this.stamina = maxStamina;
+        // }
 
         public String getInfo() {
             return String.format("%s  Stamina: %d",super.getInfo(), this.stamina);
@@ -43,12 +43,12 @@ public class melee {
             target.getDamage(damage);
         }
         
-        public spearman() {
-            super(String.format("Hero_Spearman #%d", ++spearman.number),
-            spearman.r.nextInt(100, 200));
-            this.maxStamina = spearman.r.nextInt(50, 100);
-            this.stamina = maxStamina;
-        }
+        // public spearman() {
+        //     super(String.format("Hero_Spearman #%d", ++spearman.number),
+        //             spearman.r.nextInt(100, 200));
+        //     this.maxStamina = spearman.r.nextInt(50, 100);
+        //     this.stamina = maxStamina;
+        // }
 
         public String getInfo() {
             return String.format("%s  Stamina: %d",super.getInfo(), this.stamina);
