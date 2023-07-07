@@ -16,7 +16,7 @@ public abstract class Units implements InGameInterface {
     
     public Units(String name, int hp) {
         this.name = name;
-        this.hp = this.maxHp = 100;
+        this.hp = this.maxHp;
     }
     
     public Units() {
