@@ -29,7 +29,11 @@ public class Melee {
 
         @Override
         public void step() {
-            throw new UnsupportedOperationException("Unimplemented method 'step'");
+        }
+
+        @Override
+        public String getInfo1() {
+            return "Rogue " + name;
         }
 
     }
@@ -61,7 +65,11 @@ public class Melee {
 
         @Override
         public void step() {
-            throw new UnsupportedOperationException("Unimplemented method 'step'");
+        }
+
+        @Override
+        public String getInfo1() {
+            return "Spearman " + name;
         }
 
     }

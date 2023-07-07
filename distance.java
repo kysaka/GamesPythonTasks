@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Distance {
 
     public class Sniper extends Units {
@@ -21,7 +23,12 @@ public class Distance {
 
         @Override
         public void step() {
-            throw new UnsupportedOperationException("Unimplemented method 'step'");
+        }
+
+        @Override
+        public String getInfo1() {
+            String s = String.valueOf(Name.values()[new Random().nextInt(Name.values().length)]);
+            return "Sniper " + s;
         }
     }
 
@@ -46,7 +53,12 @@ public class Distance {
 
         @Override
         public void step() {
-            throw new UnsupportedOperationException("Unimplemented method 'step'");
+        }
+
+        @Override
+        public String getInfo1() {
+            String s = String.valueOf(Name.values()[new Random().nextInt(Name.values().length)]);
+            return "Crossbowman  " + s;
         }
 
     }

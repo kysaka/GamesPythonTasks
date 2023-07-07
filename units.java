@@ -6,6 +6,7 @@ public abstract class Units implements InGameInterface {
     protected static Random r;
 
     protected String name;
+    
     protected int hp;
     protected int maxHp;
 
@@ -14,9 +15,15 @@ public abstract class Units implements InGameInterface {
         Units.r = new Random();
     }
     
-    public Units(String name, int hp) {
+    protected Units(String name, int hp) {
         this.name = name;
         this.hp = this.maxHp;
+    }
+
+    @Override
+    public String getInfo1() {
+        String s = String.valueOf(Name.values()[new Random().nextInt(Name.values().length)]);
+        return s;
     }
     
     public Units() {
@@ -29,7 +36,7 @@ public abstract class Units implements InGameInterface {
         return String.format("Name: %s  Hp: %d  Type: %s", 
                 this.name, this.hp, this.getClass().getSimpleName());
     }
-    
+   
     
     protected void healed(int Hp) {
         this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
@@ -41,15 +48,15 @@ public abstract class Units implements InGameInterface {
         }
     }
     
-    public int health;
+    protected int health;
 
-    public int defence;
+    protected int defence;
 
-    public int energy;
+    protected int energy;
 
-    public int damage;
+    protected int damage;
 
-    public int actionPoints;
+    protected int actionPoints;
     
     public boolean hasAP(){
         if (actionPoints > 0){
@@ -57,7 +64,7 @@ public abstract class Units implements InGameInterface {
         } else return false;
     } 
 
-    public int initiave;
+    protected int initiave;
 
     public Units (String name, int health, int defence, int energy, int damage, int actionPoints, int initiave){
         this.name = name;
