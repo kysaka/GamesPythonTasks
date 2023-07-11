@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Melee {
 
     public class Rogue extends Units {
@@ -5,8 +8,8 @@ public class Melee {
         // private int maxStamina;
         // private int stamina;
 
-        public Rogue(String name, int health, int defence, int stamina, int damage, int actionPoints, int initiave) {
-            super("Rogue", 100, 30, 50, 100, 5, 2);
+        public Rogue(String name, int health, int defence, int stamina, int damage, int actionPoints, int initiave, int x, int y) {
+            super("Rogue", 200, 30, 50, 100, 5, 2, x, y);
             
 
         }
@@ -24,16 +27,20 @@ public class Melee {
         // }
 
         public String getInfo() {
+            this.hp = (200);
             return String.format("%s  Stamina: %d",super.getInfo(), this.energy);
         }
 
         @Override
-        public void step() {
+        public String getInfo1() {
+            String s = String.valueOf(Name.values()[new Random().nextInt(Name.values().length)]);
+            return "Peasant " + s;
         }
 
         @Override
-        public String getInfo1() {
-            return "Rogue " + name;
+        public void step(ArrayList<Units> units){
+            Units tmp = nearest(units); 
+            System.out.println(tmp.name + " " + coordinates.countDistance(tmp.coordinates));
         }
 
     }
@@ -43,8 +50,8 @@ public class Melee {
         // private int maxStamina;
         // private int stamina;
 
-        public Spearman(String name, int health, int defence, int stamina, int damage, int actionPoints, int initiave) {
-            super("Spearman", 100, 50, 75, 70, 5, 2);
+        public Spearman(String name, int health, int defence, int stamina, int damage, int actionPoints, int initiave, int x, int y) {
+            super("Spearman", 200, 50, 75, 70, 5, 2, x, y);
         }
 
         public void attack(Units target) {
@@ -60,17 +67,20 @@ public class Melee {
         // }
 
         public String getInfo() {
+            this.hp = (200);
             return String.format("%s  Stamina: %d",super.getInfo(), this.energy);
         }
 
         @Override
-        public void step() {
+        public String getInfo1() {
+            String s = String.valueOf(Name.values()[new Random().nextInt(Name.values().length)]);
+            return "Spearman " + s;
         }
 
         @Override
-        public String getInfo1() {
-            return "Spearman " + name;
+        public void step(ArrayList<Units> units){
+            Units tmp = nearest(units); 
+            System.out.println(tmp.name + " " + coordinates.countDistance(tmp.coordinates));
         }
-
     }
 }

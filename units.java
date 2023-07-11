@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class Units implements InGameInterface {
@@ -26,17 +27,16 @@ public abstract class Units implements InGameInterface {
         return s;
     }
     
+    
     public Units() {
         this(String.format("Hero_Units #%d", ++Units.number),
         Units.r.nextInt(100, 200));
     }
     
     public String getInfo() {
-        this.hp = Units.r.nextInt(100, 150);
-        return String.format("Name: %s  Hp: %d  Type: %s", 
-                this.name, this.hp, this.getClass().getSimpleName());
+        return String.format("Name: %s  Hp: %d  Type: %s X:%d Y:%d", this.name, this.hp, this.getClass().getSimpleName(), this.coordinates.x, this.coordinates.y);
     }
-   
+    
     
     protected void healed(int Hp) {
         this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
@@ -48,14 +48,32 @@ public abstract class Units implements InGameInterface {
         }
     }
     
+    public Units nearest (ArrayList<Units> units) {
+        double nearestDistance = Double.MAX_VALUE;
+        Units nearestEnemy = null;
+        for (int i = 0; i < units.size(); i++) {
+            if(coordinates.countDistance(units.get(i).coordinates) < nearestDistance){
+                nearestEnemy = units.get(i);
+                nearestDistance = coordinates.countDistance(units.get(i).coordinates);
+            }
+        }
+        return nearestEnemy;
+    }
+    
+    @Override
+    public void step(ArrayList<Units> units){
+
+    }
+    
+    
     protected int health;
-
+    
     protected int defence;
-
+    
     protected int energy;
-
+    
     protected int damage;
-
+    
     protected int actionPoints;
     
     public boolean hasAP(){
@@ -65,8 +83,10 @@ public abstract class Units implements InGameInterface {
     } 
 
     protected int initiave;
-
-    public Units (String name, int health, int defence, int energy, int damage, int actionPoints, int initiave){
+    
+    Coordinates coordinates;
+    
+    public Units (String name, int health, int defence, int energy, int damage, int actionPoints, int initiave, int x, int y){
         this.name = name;
         this.health = health;
         this.defence = defence;
@@ -74,6 +94,24 @@ public abstract class Units implements InGameInterface {
         this.damage = damage;
         this.actionPoints = actionPoints;
         this.initiave = initiave;
+        coordinates = new Coordinates(x, y);
     }
 
+    public int getX() {
+        return 0;
+    }
+
+    public int getY() {
+        return 0;
+    }
+
+    public String getName() {
+        return null;
+    }
+
+    public void setX(int i) {
+    }
+
+    public void setY(int i) {
+    }
 }

@@ -1,4 +1,4 @@
 public enum Name {
     
-    Aegnor, Basil, Círdan, Eldacar,  Niall;
+    Aegnor, Basil, Duwende, Círdan, Eldacar,  Niall, Oillill;
 }
