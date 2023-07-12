@@ -8,7 +8,7 @@ public class Melee {
         // private int maxStamina;
         // private int stamina;
 
-        public Rogue(String name, int health, int defence, int stamina, int damage, int actionPoints, int initiave, int x, int y) {
+        public Rogue(String name, int x, int y) {
             super("Rogue", 200, 30, 50, 100, 5, 2, x, y);
             
 
@@ -50,7 +50,7 @@ public class Melee {
         // private int maxStamina;
         // private int stamina;
 
-        public Spearman(String name, int health, int defence, int stamina, int damage, int actionPoints, int initiave, int x, int y) {
+        public Spearman(String name, int x, int y) {
             super("Spearman", 200, 50, 75, 70, 5, 2, x, y);
         }
 
@@ -66,6 +66,7 @@ public class Melee {
         //     this.stamina = maxStamina;
         // }
 
+        @Override
         public String getInfo() {
             this.hp = (200);
             return String.format("%s  Stamina: %d",super.getInfo(), this.energy);
@@ -82,5 +83,6 @@ public class Melee {
             Units tmp = nearest(units); 
             System.out.println(tmp.name + " " + coordinates.countDistance(tmp.coordinates));
         }
+
     }
 }

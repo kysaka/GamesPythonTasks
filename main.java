@@ -3,16 +3,16 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Onlydistance.Mage mage = new Onlydistance().new Mage("Mage", 100, 10, 100, 50, 5, 1, 1,1);
-        Onlydistance.Monk monk = new Onlydistance().new Monk("Monk", 100, 10, 100, 50, 5, 1, 1, 6);
+        Onlydistance.Mage mage = new Onlydistance().new Mage("Mage", 1,1);
+        Onlydistance.Monk monk = new Onlydistance().new Monk("Monk", 1, 6);
         
-        Distance.Sniper sniper = new Distance().new Sniper("Sniper", 100, 10, 100, 50, 5, 1, 5, 1);
-        Distance.Crossbowman crossbowman = new Distance().new Crossbowman("Crossbowman", 100, 10, 100, 50, 5, 1, 5, 6);
+        Distance.Sniper sniper = new Distance().new Sniper("Sniper", 5, 1);
+        Distance.Crossbowman crossbowman = new Distance().new Crossbowman("Crossbowman", 5, 6);
 
-        Melee.Rogue rogue = new Melee().new Rogue("Rogue", 100, 30, 50, 100, 5, 2, 3, 2);
-        Melee.Spearman spearman = new Melee(). new Spearman("Spearman", 100, 50, 75, 70, 5, 2, 3, 5);
+        Melee.Rogue rogue = new Melee().new Rogue("Rogue", 3, 2);
+        Melee.Spearman spearman = new Melee(). new Spearman("Spearman", 3, 5);
 
-        Porter.Peasant peasant = new Porter().new Peasant("Peasant", 50, 10, 10, 20, 2, 1, 0, 0);
+        Porter.Peasant peasant = new Porter().new Peasant("Peasant", 0, 0);
 
         System.out.println(mage.getInfo());
         System.out.println(mage.getInfo1());
@@ -49,10 +49,10 @@ public class Main {
         for (int i = 0; i <= teamCount; i++) {
             int val = rand.nextInt(4);
             switch (val){
-                case 0 -> team1.add(new Onlydistance().new Mage("Mage", 100, 10, 100, 50, 5, 1, 1,1));
-                case 1 -> team1.add(new Distance().new Sniper("Sniper", 100, 10, 100, 50, 5, 1, 5, 1));
-                case 2 -> team1.add(new Melee().new Rogue("Rogue", 100, 30, 50, 100, 5, 2, 3, 2));
-                case 3 -> team1.add(new Porter().new Peasant("Peasant", 50, 10, 10, 20, 2, 1, 3, 1));
+                case 0 -> team1.add(new Onlydistance().new Mage("Mage", 1,1));
+                case 1 -> team1.add(new Distance().new Sniper("Sniper", 5, 1));
+                case 2 -> team1.add(new Melee().new Rogue("Rogue", 3, 2));
+                case 3 -> team1.add(new Porter().new Peasant("Peasant", 3, 1));
             }
             System.out.println(team1.get(i).getInfo());
         }
@@ -63,10 +63,10 @@ public class Main {
         for (int i = 0; i <= teamCount; i++) {
             int val = rand.nextInt(4);
             switch (val){
-                case 0 -> team2.add(new Onlydistance().new Monk("Monk", 100, 10, 100, 50, 5, 1, 1, 6));
-                case 1 -> team2.add(new Distance().new Crossbowman("Crossbowman", 100, 10, 100, 50, 5, 1, 5, 6));
-                case 2 -> team2.add(new Melee().new Spearman("Spearman", 100, 50, 75, 70, 5, 2, 3, 5));
-                case 3 -> team2.add(new Porter().new Peasant("Peasant", 50, 10, 10, 20, 2, 1, 3, 6));
+                case 0 -> team2.add(new Onlydistance().new Monk("Monk", 1, 6));
+                case 1 -> team2.add(new Distance().new Crossbowman("Crossbowman", 5, 6));
+                case 2 -> team2.add(new Melee().new Spearman("Spearman", 3, 5));
+                case 3 -> team2.add(new Porter().new Peasant("Peasant", 3, 6));
             }
             System.out.println(team2.get(i).getInfo());
         }
@@ -77,8 +77,6 @@ public class Main {
 
         System.out.println("\nThe nearset2");
         team2.forEach(n -> n.step(team1));
-        
-        
         
 
     }

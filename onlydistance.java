@@ -8,7 +8,7 @@ public class Onlydistance {
         // private int maxMana;
         // private int mana;
         
-        public Mage(String name, int health, int defence, int mana, int damage, int actionPoints, int initiave, int x, int y) {
+        public Mage(String name, int x, int y) {
             super("Mage", 100, 10, 100, 50, 5, 1, x, y);
         }
         
@@ -51,7 +51,7 @@ public class Onlydistance {
         // private int maxBlessing;
 
 
-        public Monk(String name, int health, int defence, int Blessing, int damage, int actionPoints, int initiave, int x, int y) {
+        public Monk(String name, int x, int y) {
             super("Monk", 100, 10, 100, 50, 5, 1, x, y);
         }
         

@@ -6,10 +6,10 @@ public abstract class Units implements InGameInterface {
     protected static int number;
     protected static Random r;
 
-    protected String name;
+    protected String name; 
     
-    protected int hp;
-    protected int maxHp;
+    protected int hp; // здоровье  
+    protected int maxHp; // макс. здоровье
 
     static {
         Units.number = 0;
@@ -38,10 +38,6 @@ public abstract class Units implements InGameInterface {
     }
     
     
-    protected void healed(int Hp) {
-        this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
-    }
-    
     protected void getDamage(int damage) {
         if (this.hp - damage > 0) {
             this.hp -= damage;
@@ -62,18 +58,44 @@ public abstract class Units implements InGameInterface {
     
     @Override
     public void step(ArrayList<Units> units){
-
+        
     }
     
     
-    protected int health;
+    protected int health; // лечение 
     
-    protected int defence;
+    protected void healed(int Hp) {
+        this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
+    }
+
+    protected int defence; // защита
     
-    protected int energy;
+    protected int energy; // стамина, мана 
+
+    protected int strength; // сила 
+
+    public int getStrength(){
+        return strength;
+    }
     
-    protected int damage;
+    protected int attack; // атака
     
+    public void doAttack(Units target){
+        int damage = 50;
+        target.getDamage(damage);
+    }
+    
+    protected int damage; // урон
+    
+    public void getDamage(){
+        if(this.health - damage > 0){
+            this.health -= damage; 
+        }
+        else {
+            this.health = 0;
+        }
+    }
+
     protected int actionPoints;
     
     public boolean hasAP(){
@@ -84,7 +106,7 @@ public abstract class Units implements InGameInterface {
 
     protected int initiave;
     
-    Coordinates coordinates;
+    protected Coordinates coordinates;
     
     public Units (String name, int health, int defence, int energy, int damage, int actionPoints, int initiave, int x, int y){
         this.name = name;
@@ -97,21 +119,42 @@ public abstract class Units implements InGameInterface {
         coordinates = new Coordinates(x, y);
     }
 
-    public int getX() {
-        return 0;
+    public Units findClosestEnemy(ArrayList<Units> list){
+        double max = 1000;
+        int index = 0;
+
+        for (int i = 0; i < list.size(); i++) {
+            if (coordinates.countDistance(list.get(i).coordinates) < max) {
+                max = coordinates.countDistance(list.get(i).coordinates);
+                index = i;
+            }
+        }
+        // System.out.println("Fithe " + list.get(index).name + " " + "index " + index + " " + "melle " );
+        return list.get(index);
     }
 
-    public int getY() {
-        return 0;
+
+
+    protected static class Coord {
+        private int x;
+        private int y;
+
+
+        public int getX() {
+            return x;
+        }
+
+        public void setX(int x) {
+            this.x = x;
+        }
+
+        public int getY() {
+            return y;
+        }
+
+        public void setY(int y) {
+            this.y = y;
+        }
     }
 
-    public String getName() {
-        return null;
-    }
-
-    public void setX(int i) {
-    }
-
-    public void setY(int i) {
-    }
 }
